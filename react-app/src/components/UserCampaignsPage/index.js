@@ -2,11 +2,21 @@ import React from 'react';
 import './usercampaignspage.css';
 
 function UserCampaignsPage({user, campaigns}) {
-    const ex = campaigns[1];
+    const userId = user?.id;
+    const collection = Object.values(campaigns)
+    console.log(collection)
     return (
-        <ul>
-            <li><strong>Campaign Name</strong> {ex.name}</li>
-        </ul>
+        <>
+            {collection.map(c => (
+                <div>
+                    <ul>
+                        <li>{c?.name}</li>
+                        <li>{c?.about}</li>
+                        <li>{c?.player_max}</li>
+                    </ul>
+                </div>
+            ))}
+        </>
     )
 }
 

@@ -1,6 +1,7 @@
 // constants
 const CREATE_CAMPAIGN = 'session/CREATE_CAMPAIGN';
 const READ_ALL_CAMPAIGNS = 'session/READ_ALL_CAMPAIGNS';
+const READ_USER_CAMPAIGNS = 'session/READ_USER_CAMPAIGNS';
 const READ_CAMPAIGN = 'session/READ_CAMPAIGN';
 const UPDATE_CAMPAIGN = 'session/UPDATE_CAMPAIGN';
 const DELETE_CAMPAIGN = 'session/DELETE_CAMPAIGN';
@@ -42,6 +43,19 @@ export const read_campaigns = () => async dispatch => {
     if (res.ok) {
         const campaigns = await res.json();
         dispatch(getAllCampaigns(campaigns));
+    }
+}
+
+const getUserCampaigns = campaigns => ({
+    type: READ_USER_CAMPAIGNS,
+    payload: campaigns
+});
+
+export const user_campaigns = user_id => async dispatch => {
+    const res = await fetch(`/api/campaigns/${user_id}`);
+    if (res.ok) {
+        const campaigns = await res.json()
+        dispatch(getUserCampaigns(campaigns));
     }
 }
 
@@ -105,6 +119,9 @@ export default function reducer(state = initialState, action) {
             newState = { ...state, [action.payload.id]: action.payload }
             return { ...newState };
         case READ_ALL_CAMPAIGNS:
+            newState = { ...state, ...action.payload };
+            return newState;
+        case READ_USER_CAMPAIGNS:
             newState = { ...state, ...action.payload };
             return newState;
         case READ_CAMPAIGN:
