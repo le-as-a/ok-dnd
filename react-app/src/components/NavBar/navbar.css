@@ -1,0 +1,48 @@
+.guest_nav, .user_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    color: #d8c99b;
+    align-items: center;
+    margin-top: 1em;
+}
+
+#log-in-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0
+}
+
+#login-b, #logout-b {
+    margin: 0 1em;
+    margin-left: 1.5em;
+    width: 6em;
+    height: 3em;
+    font-size: medium;
+}
+
+.user_nav {
+    justify-content: space-between;
+}
+
+.user_navlinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.navbar_links {
+    font-size: x-large;
+    padding-left: 5em;
+}
+
+.user_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.active {
+    color: #BD632F;
+}

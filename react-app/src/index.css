@@ -1,0 +1,15 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #273e47;
+    font-family: 'Baloo Bhaijaan 2', cursive;
+    color: #d8c99b;
+}
+
+a {
+    color: #d8c99b;
+}
+
+button:hover {
+    cursor:pointer;
+}

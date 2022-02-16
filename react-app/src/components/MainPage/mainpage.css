@@ -1,0 +1,47 @@
+.main-page {
+    height: 100%;
+    color: #d8c99b;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2em;
+}
+
+.left-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-main {
+    margin-top: 2.5em;
+}
+
+.right-main img {
+    height: 40em;
+}
+
+.auth-buttons {
+    width: 10em;
+    height: 4em;
+    font-size: x-large;
+    background-color: #a4243b;
+    color: #d8c99b;
+    font-weight: bold;
+    border-radius: .5em;
+    border: 0;
+}
+
+#register-b {
+    margin-top: 2em;
+}
+
+#demo-b {
+    margin-top: .5em;
+    height: 2em;
+}
+
+.left-main > p {
+    font-size: x-large;
+    width: 600px;
+}
