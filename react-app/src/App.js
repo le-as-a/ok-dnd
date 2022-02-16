@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { authenticate } from './store/session';
 import MainPage from './components/MainPage';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -10,6 +9,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import UserCampaignsPage from './components/UserCampaignsPage';
 import CampaignPage from './components/CampaignPage';
+import { authenticate } from './store/session';
 import { get_questionnaire } from './store/questionnaire';
 import { read_campaigns } from './store/campaign';
 
@@ -51,7 +51,7 @@ function App() {
           <UserCampaignsPage campaigns={campaigns} user={user} />
         </Route>
         <Route path={`/campaigns/:campaignId`} exact={true}>
-          <CampaignPage campaigns={campaigns} />
+          <CampaignPage user={user} campaigns={campaigns} />
         </Route>
       </Switch>
       <Footer />

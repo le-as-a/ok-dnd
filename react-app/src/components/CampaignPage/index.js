@@ -3,7 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 
-const CampaignPage = ({campaigns}) => {
+const CampaignPage = ({user, campaigns}) => {
     const { campaignId } = useParams();
     const current = campaigns[campaignId];
 
