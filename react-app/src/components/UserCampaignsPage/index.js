@@ -15,7 +15,7 @@ function UserCampaignsPage({user, campaigns}) {
             <h3>Created</h3>
             {collection.map((c, i) => (
                 <NavLink to={`/campaigns/${c?.id}`}>
-                    <div className='campaign-card'>
+                    <div className='campaign-card' key={`${c?.id}`}>
                         <ul>
                             <li>{c?.name}</li>
                             <li>{c?.about}</li>
