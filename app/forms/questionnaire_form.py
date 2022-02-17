@@ -12,3 +12,6 @@ class QuestionnaireForm(FlaskForm):
     background = TextField(
         'background', validators=[DataRequired()]
     )
+    user_id = IntegerField(
+        'user_id', validators=[DataRequired()]
+    )

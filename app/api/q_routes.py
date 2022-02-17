@@ -12,7 +12,8 @@ def new():
         exp_lvl=form.data['exp_lvl'],
         themes=form.data['themes'],
         background=form.data['background'],
-        user_id=form.data['user_id'])
+        user_id=form.data['user_id']
+    )
     db.session.add(questionnaire)
     db.session.commit()
     return questionnaire.to_dict()
@@ -41,4 +42,4 @@ def delete(user_id):
     q_id = questionnaire.id
     db.session.delete(questionnaire)
     db.session.commit()
-    return q_id
+    return questionnaire.to_dict()

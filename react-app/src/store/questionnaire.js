@@ -74,7 +74,6 @@ export const del_questionnaire = (user_id) => async dispatch => {
     if (res.ok) {
         const data = res.json();
         dispatch(delQue(data));
-        return data;
     }
 }
 

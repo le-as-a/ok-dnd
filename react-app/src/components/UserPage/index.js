@@ -12,6 +12,7 @@ function UserPage({user}) {
   const [expLvl, setExpLvl] = useState(questionnaire?.exp_lvl);
   const [themes, setThemes] = useState(questionnaire?.themes);
   const [background, setBackground] = useState(questionnaire?.background);
+  const [confirm, setConfirm] = useState(false);
 
   const editClick = e => {
     e.preventDefault();
@@ -32,7 +33,8 @@ function UserPage({user}) {
 
   const delClick = async e => {
     e.preventDefault();
-    await dispatch(del_questionnaire(userId));
+    if (confirm) await dispatch(del_questionnaire(userId));
+    setConfirm(true);
   }
   
   if (!user) {
@@ -87,6 +89,7 @@ function UserPage({user}) {
             ) : questionnaire?.background}
           </li>
           {editStatus ? <button onClick={saveEdit}>Save</button> : <button onClick={editClick}>Edit</button>} <button onClick={delClick}>Delete</button>
+          {confirm && <p>Are you sure you want to delete your preferences?</p>}
         </>
       )}
       {!questionnaire && (
