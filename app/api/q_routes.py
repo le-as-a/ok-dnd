@@ -25,15 +25,15 @@ def get(user_id):
 
 @q_routes.route('/<user_id>/edit', methods=['PUT'])
 def edit(user_id):
+    form = QuestionnaireForm()
     questionnaire = Questionnaire.query.filter(Questionnaire.user_id == user_id).first()
-    q_data = request.json
 
-    questionnaire.exp_lvl = q_data['exp_lvl']
-    questionnaire.themes = q_data['themes']
-    questionnaire.background = q_data.data['background']
+    questionnaire.exp_lvl = form.data['exp_lvl']
+    questionnaire.themes = form.data['themes']
+    questionnaire.background = form.data['background']
     db.session.commit()
 
-    return jsonify(questionnaire.to_dict())
+    return questionnaire.to_dict()
 
 @q_routes.route('/delete', methods=['DELETE'])
 def delete():

@@ -9,7 +9,7 @@ const newQue = que => ({
     payload: que
 });
 
-export const new_questionnaire = (exp_lvl, themes, background) => async dispatch => {
+export const new_questionnaire = ({exp_lvl, themes, background, user_id}) => async dispatch => {
     const res = await fetch('/api/questionnaire/new', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -17,6 +17,7 @@ export const new_questionnaire = (exp_lvl, themes, background) => async dispatch
             exp_lvl,
             themes,
             background,
+            user_id
         }),
     });
 
@@ -77,21 +78,21 @@ export const del_questionnaire = (user_id) => async dispatch => {
     }
 }
 
-const initialState = { questionnaire: null };
+const initialState = { ...null };
 export default function reducer(state = initialState, action) {
     let newState;
     switch(action.type) {
         case NEW_Q:
-            newState = { ...state, questionnaire: action.payload };
+            newState = { ...state, ...action.payload };
             return newState;
         case GET_Q:
-            newState = { ...state, questionnaire: action.payload };
+            newState = { ...state, ...action.payload };
             return newState;
         case EDIT_Q:
-            newState = { ...state, questionnaire: action.payload };
+            newState = { ...state, ...action.payload };
             return newState;
         case DEL_Q:
-            return { questionnaire: null };
+            return { ...null };
         default:
             return state;
     }

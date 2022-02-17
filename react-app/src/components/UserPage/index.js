@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { edit_questionnaire } from '../../store/questionnaire';
+import { NavLink } from 'react-router-dom';
+import { edit_questionnaire, del_questionnaire } from '../../store/questionnaire';
 import './userpage.css';
 
 function UserPage({user}) {
-  const questionnaire = useSelector(state => state.questionnaire.questionnaire)
+  const questionnaire = useSelector(state => state.questionnaire)
   const dispatch = useDispatch();
   const userId = user?.id;
   const [editStatus, setEditStatus] = useState(false);
   const [expLvl, setExpLvl] = useState(questionnaire?.exp_lvl);
   const [themes, setThemes] = useState(questionnaire?.themes);
   const [background, setBackground] = useState(questionnaire?.background);
+  console.log("questionnaire: ", questionnaire);
 
   const editClick = e => {
     e.preventDefault();
@@ -20,13 +22,18 @@ function UserPage({user}) {
   const saveEdit = async e => {
     e.preventDefault();
     const updated = {
-      expLvl,
+      exp_lvl: expLvl,
       themes,
       background,
       user_id: userId
     }
     await dispatch(edit_questionnaire(updated));
     setEditStatus(false);
+  }
+
+  const delClick = async e => {
+    e.preventDefault();
+    await dispatch(del_questionnaire(userId));
   }
   
   if (!user) {
@@ -50,7 +57,7 @@ function UserPage({user}) {
           <li>
             <strong>Experience Level</strong> {editStatus ? (
               <input
-                placeholder={`${expLvl}`}
+                placeholder={`${questionnaire?.exp_lvl}`}
                 name='exp_lvl'
                 value={expLvl}
                 onChange={e => setExpLvl(e.target.value)}
@@ -59,16 +66,32 @@ function UserPage({user}) {
             ) : questionnaire?.exp_lvl}
           </li>
           <li>
-            <strong>Themes</strong> {questionnaire?.themes}
+            <strong>Themes</strong> {editStatus ? (
+              <input
+                placeholder={`${questionnaire?.themes}`}
+                name='themes'
+                value={themes}
+                onChange={e => setThemes(e.target.value)}
+                type='text'
+              />
+            ) : questionnaire?.themes}
           </li>
           <li>
-            <strong>Background</strong> {questionnaire?.background}
+            <strong>Background</strong> {editStatus ? (
+              <input
+                placeholder={`${questionnaire?.background}`}
+                name='background'
+                value={background}
+                onChange={e => setBackground(e.target.value)}
+                type='text'
+              />
+            ) : questionnaire?.background}
           </li>
-          {editStatus ? <button onClick={saveEdit}>Save</button> : <button onClick={editClick}>Edit</button>} <button>Delete</button>
+          {editStatus ? <button onClick={saveEdit}>Save</button> : <button onClick={editClick}>Edit</button>} <button onClick={delClick}>Delete</button>
         </>
       )}
       {!questionnaire && (
-        <button>Set Preferences</button>
+          <NavLink to={`/users/${userId}/questionnaire/new`}><button>Set Preferences</button></NavLink>
       )}
     </ul>
     </>
