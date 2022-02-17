@@ -18,7 +18,7 @@ def new():
     return questionnaire.to_dict()
 
 
-@q_routes.route('/<user_id>')
+@q_routes.route('/<user_id>/')
 def get(user_id):
     questionnaire = Questionnaire.query.filter(Questionnaire.user_id == user_id).first()
     return questionnaire.to_dict()

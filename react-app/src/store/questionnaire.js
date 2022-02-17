@@ -33,7 +33,7 @@ const getQue = que => ({
 });
 
 export const get_questionnaire = (user_id) => async dispatch => {
-    const res = await fetch(`/api/questionnaire/${user_id}`);
+    const res = await fetch(`/api/questionnaire/${user_id}/`);
     if (res.ok) {
         const data = await res.json();
         dispatch(getQue(data));

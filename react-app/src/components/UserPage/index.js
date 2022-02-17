@@ -9,6 +9,7 @@ function UserPage({user, questionnaire}) {
   }
   
   return (
+    <>
     <ul>
       <li>
         <strong>User Id</strong> {userId}
@@ -19,16 +20,25 @@ function UserPage({user, questionnaire}) {
       <li>
         <strong>Email</strong> {user.email}
       </li>
-      <li>
-        <strong>Experience Level</strong> {questionnaire?.exp_lvl}
-      </li>
-      <li>
-        <strong>Themes</strong> {questionnaire?.themes}
-      </li>
-      <li>
-        <strong>Background</strong> {questionnaire?.background}
-      </li>
+      {questionnaire && (
+        <>
+          <li>
+            <strong>Experience Level</strong> {questionnaire?.exp_lvl}
+          </li>
+          <li>
+            <strong>Themes</strong> {questionnaire?.themes}
+          </li>
+          <li>
+            <strong>Background</strong> {questionnaire?.background}
+          </li>
+          <button>Edit</button> <button>Delete</button>
+        </>
+      )}
+      {!questionnaire && (
+        <button>Set Preferences</button>
+      )}
     </ul>
+    </>
   );
 }
 export default UserPage;

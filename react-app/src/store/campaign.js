@@ -39,7 +39,7 @@ const getAllCampaigns = campaigns => ({
 });
 
 export const read_campaigns = () => async dispatch => {
-    const res = await fetch(`/api/campaigns`);
+    const res = await fetch(`/api/campaigns/`);
     if (res.ok) {
         const campaigns = await res.json();
         dispatch(getAllCampaigns(campaigns));
