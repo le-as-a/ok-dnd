@@ -5,14 +5,13 @@ import { edit_questionnaire, del_questionnaire } from '../../store/questionnaire
 import './userpage.css';
 
 function UserPage({user}) {
-  const questionnaire = useSelector(state => state.questionnaire)
+  const questionnaire = useSelector(state => state.questionnaire.questionnaire);
   const dispatch = useDispatch();
   const userId = user?.id;
   const [editStatus, setEditStatus] = useState(false);
   const [expLvl, setExpLvl] = useState(questionnaire?.exp_lvl);
   const [themes, setThemes] = useState(questionnaire?.themes);
   const [background, setBackground] = useState(questionnaire?.background);
-  console.log("questionnaire: ", questionnaire);
 
   const editClick = e => {
     e.preventDefault();

@@ -35,10 +35,9 @@ def edit(user_id):
 
     return questionnaire.to_dict()
 
-@q_routes.route('/delete', methods=['DELETE'])
-def delete():
-    userId = current_user.id
-    questionnaire = Questionnaire.query.filter(Questionnaire.user_id == userId).first()
+@q_routes.route('/<user_id>/delete', methods=['DELETE'])
+def delete(user_id):
+    questionnaire = Questionnaire.query.filter(Questionnaire.user_id == user_id).first()
     q_id = questionnaire.id
     db.session.delete(questionnaire)
     db.session.commit()

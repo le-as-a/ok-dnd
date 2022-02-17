@@ -78,21 +78,21 @@ export const del_questionnaire = (user_id) => async dispatch => {
     }
 }
 
-const initialState = { ...null };
+const initialState = { questionnaire: null };
 export default function reducer(state = initialState, action) {
     let newState;
     switch(action.type) {
         case NEW_Q:
-            newState = { ...state, ...action.payload };
+            newState = { ...state, questionnaire: action.payload };
             return newState;
         case GET_Q:
-            newState = { ...state, ...action.payload };
+            newState = { ...state, questionnaire: action.payload };
             return newState;
         case EDIT_Q:
-            newState = { ...state, ...action.payload };
+            newState = { ...state, questionnaire: action.payload };
             return newState;
         case DEL_Q:
-            return { ...null };
+            return { questionnaire: null };
         default:
             return state;
     }
