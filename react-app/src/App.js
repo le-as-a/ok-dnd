@@ -10,6 +10,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import UserCampaignsPage from './components/UserCampaignsPage';
 import CampaignPage from './components/CampaignPage';
 import PreferenceSettings from './components/PreferenceSettings';
+import NewCampaign from './components/NewCampaign';
 import { authenticate } from './store/session';
 import { get_questionnaire } from './store/questionnaire';
 import { read_campaigns } from './store/campaign';
@@ -56,6 +57,9 @@ function App() {
         </Route>
         <Route path={`/users/${userId}/questionnaire/new`} exact={true}>
           <PreferenceSettings user={user} questionnaire={que} />
+        </Route>
+        <Route path={`/users/${userId}/campaigns/new`} exact={true}>
+          <NewCampaign user={user} />
         </Route>
       </Switch>
       <Footer />

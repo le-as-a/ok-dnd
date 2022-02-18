@@ -12,6 +12,9 @@ function UserCampaignsPage({user, campaigns}) {
 
     return (
         <>
+            <NavLink to={`/users/${userId}/campaigns/new`}>
+                <button>Create New Campaign</button>
+            </NavLink>
             <h3>Created</h3>
             {collection.map((c, i) => (
                 <NavLink to={`/campaigns/${c?.id}`}>

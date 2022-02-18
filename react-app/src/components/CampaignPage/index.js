@@ -1,12 +1,14 @@
 import './campaignpage.css';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { update_campaign, delete_campaign } from '../../store/campaign';
 import { useDispatch } from 'react-redux';
 
 
 const CampaignPage = ({user, campaigns}) => {
+    const userId = user?.id;
     const dispatch = useDispatch();
+    const history = useHistory();
     const { campaignId } = useParams();
     const current = campaigns[campaignId];
     const [editStatus, setEditStatus] = useState(false);
@@ -40,7 +42,10 @@ const CampaignPage = ({user, campaigns}) => {
 
     const delClick = async e => {
         e.preventDefault();
-        await dispatch(delete_campaign(current));
+        if (confirm) {
+            await dispatch(delete_campaign(current?.id));
+            history.push(`/users/${userId}/campaigns`);
+        }
         setConfirm(true);
     }
 

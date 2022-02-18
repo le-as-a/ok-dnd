@@ -18,3 +18,6 @@ class CampaignForm(FlaskForm):
     themes = StringField(
         'themes', validators=[DataRequired()]
     )
+    user_id = IntegerField(
+        'user_id', validators=[DataRequired()]
+    )
