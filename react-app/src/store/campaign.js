@@ -78,9 +78,9 @@ const updateCampaign = campaign => ({
     payload: campaign
 });
 
-export const update_campaign = ({ id, name, about, player_max, exp_req, themes }) =>
+export const update_campaign = ({ campaignId, name, about, player_max, exp_req, themes }) =>
 async dispatch => {
-    const res = await fetch(`/api/campaigns/${id}/edit`, {
+    const res = await fetch(`/api/campaigns/${campaignId}/edit`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

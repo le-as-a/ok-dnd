@@ -44,14 +44,14 @@ def all(user_id):
 
 @campaign_routes.route('/<campaign_id>/edit', methods=['PUT'])
 def edit(campaign_id):
+    form = CampaignForm()
     campaign = Campaign.query.get(campaign_id)
-    data = request.json
 
-    campaign.name = data.name
-    campaign.about = data.about
-    campaign.player_max = data.player_max
-    campaign.exp_req = data.exp_req
-    campaign.themes = data.themes
+    campaign.name = form.data['name']
+    campaign.about = form.data['about']
+    campaign.player_max = form.data['player_max']
+    campaign.exp_req = form.data['exp_req']
+    campaign.themes = form.data['themes']
     db.session.commit()
 
     return campaign.to_dict()

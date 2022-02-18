@@ -17,6 +17,7 @@ function UserPage({user}) {
   const editClick = e => {
     e.preventDefault();
     setEditStatus(true);
+    setConfirm(false);
   }
 
   const saveEdit = async e => {
@@ -29,6 +30,7 @@ function UserPage({user}) {
     }
     await dispatch(edit_questionnaire(updated));
     setEditStatus(false);
+    setConfirm(false);
   }
 
   const delClick = async e => {
@@ -58,11 +60,12 @@ function UserPage({user}) {
           <li>
             <strong>Experience Level</strong> {editStatus ? (
               <input
-                placeholder={`${questionnaire?.exp_lvl}`}
                 name='exp_lvl'
                 value={expLvl}
                 onChange={e => setExpLvl(e.target.value)}
                 type='number'
+                min='1'
+                max='3'
               />
             ) : questionnaire?.exp_lvl}
           </li>
