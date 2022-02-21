@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import { createUserErrors } from '../errorHandling';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -15,8 +14,12 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    setErrors(createUserErrors(username, email, password, repeatPassword));
-    if (!errors) await dispatch(signUp(username, email, password));
+    if (password === repeatPassword) {
+      const data = await dispatch(signUp(username, email, password));
+      if (data) {
+        setErrors(data)
+      }
+    }
   };
 
   const updateUsername = (e) => {
