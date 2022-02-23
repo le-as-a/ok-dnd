@@ -12,21 +12,25 @@ function UserCampaignsPage({user, campaigns}) {
 
     return (
         <>
-            <NavLink to={`/users/${userId}/campaigns/new`}>
-                <button>Create New Campaign</button>
-            </NavLink>
-            <h3>Created</h3>
-            {collection.map((c, i) => (
-                <NavLink to={`/campaigns/${c?.id}`}>
-                    <div className='campaign-card' key={`${c?.id}`}>
-                        <ul>
-                            <li>{c?.name}</li>
-                            <li>{c?.about}</li>
-                            <li>{c?.player_max}</li>
-                        </ul>
-                    </div>
+            <div className='campaign-stuff'>
+                <NavLink to={`/users/${userId}/campaigns/new`}>
+                    <button id='create-campaign'>New</button>
                 </NavLink>
-            ))}
+                <h3>Created</h3>
+            </div>
+            <div className='campaign-container'>
+                {collection.map((c, i) => (
+                    <NavLink to={`/campaigns/${c?.id}`} className='c-card-link'>
+                        <div className='campaign-card' key={`${c?.id}`}>
+                            <ul type='none' id='cc-list'>
+                                <li><u>Campaign Name:</u> {c?.name}</li>
+                                <li><u>Player Max:</u> {c?.player_max}</li>
+                                <li><u>Details:</u><br />{c?.about}</li>
+                            </ul>
+                        </div>
+                    </NavLink>
+                ))}
+            </div>
         </>
     )
 }

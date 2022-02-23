@@ -33,6 +33,7 @@ function App() {
   }, [dispatch, userId]);
 
   if (!loaded) return null;
+  
   return (
     <BrowserRouter>
       <NavBar />

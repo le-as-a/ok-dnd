@@ -13,9 +13,12 @@ const NewCampaign = ({user}) => {
     const [playerMax, setPlayerMax] = useState(1);
     const [expReq, setExpReq] = useState(1);
     const [themes, setThemes] = useState('');
-
+    const [showErrors, setShowErrors] = useState(false);
+    let errors = [];
+    
     const onClick = async e => {
         e.preventDefault();
+        errors.splice(0);
         const data = {
             name,
             about,
@@ -23,10 +26,26 @@ const NewCampaign = ({user}) => {
             exp_req: expReq,
             themes,
             user_id: userId
+        };
+
+        if (name.length < 3 || name.length > 30) errors.push("Name must be between 3-30 characters.");
+        if (about.length < 3 || about.length > 500) errors.push("Description must be between 3-500 characters.");
+        if (playerMax < 1 || playerMax > 8) errors.push("Player max must be between 1-8.");
+        if (expReq < 1 || expReq > 3) errors.push("Experience level required must be between 1-3.");
+        if (!themes) errors.push("Must include at least one theme.");
+
+        if (errors.length === 0) {
+            setShowErrors(false);
+            await dispatch(create_campaign(data));
+            history.push(`/users/${userId}/campaigns`);
+        } else {
+            setShowErrors(true);
+            console.log(errors);
         }
 
-        await dispatch(create_campaign(data));
-        history.push(`/users/${userId}/campaigns`);
+
+        
+        
     }
 
     return (
@@ -85,6 +104,11 @@ const NewCampaign = ({user}) => {
                 /><br /><br />
                 <button onClick={onClick}>Create Campaign</button>
             </form>
+            {showErrors && (
+                <ul>
+                    {errors.map((e, i) => <li key={`${i}`}>{e}</li>)}
+                </ul>
+            )}
         </>
     );
 }

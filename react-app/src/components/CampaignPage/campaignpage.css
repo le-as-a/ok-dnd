@@ -1,0 +1,68 @@
+div.single-campaign {
+    width: 50%;
+    margin: auto;
+    font-size: x-large;
+    text-align: center;
+    background-color: #D8C99B;
+    color: #A4243B;
+    padding: .5em 0;
+    margin-top: 1em;
+    border-radius: .5em;
+}
+
+.single-campaign > ul {
+    padding: 0;
+}
+
+.pref-but {
+    font-size: large;
+    border: 0;
+    background-color: #A4243B;
+    color: #d8c99b;
+    padding: .5em .7em;
+    border-radius: .25em;
+    margin-right: .5em;
+}
+
+#name-input {
+    background-color: #d8c99b;
+    margin-left: .5em;
+    border-radius: .25em;
+    border: 1px solid #A4243B;
+    font-size: large;
+    text-align: center;
+    padding: .25em 0;
+    width: 25em;
+}
+
+#desc-input {
+    background-color: #d8c99b;
+    margin-left: .5em;
+    border-radius: .25em;
+    border: 1px solid #A4243B;
+    font-size: large;
+    width: 40em;
+    height: 15em;
+    max-height: 15em;
+}
+
+#pmax-input, #lvl-req-input {
+    background-color: #d8c99b;
+    margin-left: .5em;
+    border-radius: .25em;
+    border: 1px solid #A4243B;
+    font-size: large;
+    text-align: center;
+    width: 3em;
+}
+
+#campaign-themes-input {
+    background-color: #d8c99b;
+    margin-left: .5em;
+    border-radius: .25em;
+    border: 1px solid #A4243B;
+    font-size: large;
+    text-align: center;
+    padding: .25em 0;
+    width: 25em;
+}

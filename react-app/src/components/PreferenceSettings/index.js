@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { new_questionnaire } from "../../store/questionnaire";
+import './preferencesettings.css';
 
 const PreferenceSettings = ({user, questionnaire}) => {
     const userId = user?.id;
@@ -24,48 +25,59 @@ const PreferenceSettings = ({user, questionnaire}) => {
     }
 
     return (
-        <>
+        <div className="new-questionnaire">
             {!questionnaire && (
-                <form>
-                    <legend>Set your preferences OR <NavLink to={`/users/${userId}`}>Skip for now</NavLink></legend>
-                    <label for='experience'>How much experience do you have with DND?</label> <input
-                        name='experience'
-                        value={expLvl}
-                        placeholder='experience level...'
-                        onChange={e => setExpLvl(e.target.value)}
-                        type='number'
-                        min='1'
-                        max='3'
-                    /><br />
-                    <strong><u>Level 1 - Beginner:</u></strong> <br />
-                    Never played before to played 1-2 short-lived campaigns.<br />
-                    <strong><u>Level 2 - Intermediate:</u></strong> <br />
-                    Played a campaign or two for a while, still have some things to learn.<br />
-                    <strong><u>Level 3 - Advanced:</u></strong> <br />
-                    Been playing for a few years, comfortable with rules, have done or interested in running my own campaign.<br />
+                <form id='new-q'>
+                    <div id='exp-create'>
+                        <label className="q-label" for='experience'>How much experience do you have with DND?</label> 
+                        <input
+                            name='experience'
+                            value={expLvl}
+                            placeholder='experience level...'
+                            onChange={e => setExpLvl(e.target.value)}
+                            type='number'
+                            min='1'
+                            max='3'
+                            id='exp-input'
+                        />
+                    </div>
+                    <div id='exp-lvls'>
+                        <div className="el">
+                            <u>Level 1 - Beginner:</u><br />
+                            Never played before to played 1-2 short-lived campaigns.
+                        </div><div className="el">
+                            <u>Level 2 - Intermediate:</u><br />
+                            Played a campaign or two for a while, still have some things to learn.
+                        </div><div className="el">
+                            <u>Level 3 - Advanced:</u><br />
+                            Been playing for a few years, have done or interested in running my own campaign.
+                        </div>
+                    </div>
                     
-                    <hr />
-                    <label for='themes'>What aspects of DND are you interested in?</label>
+                    <label className="q-label" for='themes'>What aspects of DND are you interested in?</label>
                     <input
                         name='themes'
                         value={themes}
                         placeholder='themes...'
                         onChange={e => setThemes(e.target.value)}
                         type='text'
+                        id='theme-input'
                     />
-                    <hr />
-                    <label for='background'>Tell us more about you as a player:</label><br />
+                    <label className="q-label" for='background'>Tell us more about you as a player:</label>
                     <textarea
                         name='background'
                         value={background}
                         placeholder='Start writing here...'
                         onChange={e => setBackground(e.target.value)}
+                        id='bg-input'
                     /><br />
-                    <button onClick={onClick}>Save</button>
+                    <div id='q-create-b'>
+                        <button className="pref-but" onClick={onClick}>Save</button> <NavLink to={`/users/${userId}`}><button className="pref-but">Skip</button></NavLink>
+                    </div>
                 </form>
             )}
             {questionnaire && <Redirect to={`/users/${userId}`} />}
-        </>
+        </div>
     );
 }
 

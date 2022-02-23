@@ -47,13 +47,14 @@ const CampaignPage = ({user, campaigns}) => {
             history.push(`/users/${userId}/campaigns`);
         }
         setConfirm(true);
+        setEditStatus(false);
     }
 
     if (!user) return null;
 
     return (
-        <div>
-            <ul>
+        <div className='single-campaign'>
+            <ul type='none'>
                 <li><u>Name:</u> {editStatus ? (
                     <input
                         placeholder={`${current?.name}`}
@@ -61,6 +62,7 @@ const CampaignPage = ({user, campaigns}) => {
                         value={name}
                         onChange={e => setName(e.target.value)}
                         type='text'
+                        id='name-input'
                     />
                 ) : current?.name}</li>
                 <li><u>About:</u><br />
@@ -70,6 +72,7 @@ const CampaignPage = ({user, campaigns}) => {
                             name='about'
                             value={about}
                             onChange={e => setAbout(e.target.value)}
+                            id='desc-input'
                         />
                     ) : current?.about}
                 </li>
@@ -82,6 +85,7 @@ const CampaignPage = ({user, campaigns}) => {
                         type='number'
                         min='1'
                         max='8'
+                        id='pmax-input'
                     />
                 ) : current?.player_max}</li>
                 <li><u>Experience Level Required:</u> {editStatus ? (
@@ -93,6 +97,7 @@ const CampaignPage = ({user, campaigns}) => {
                         type='number'
                         min='1'
                         max='3'
+                        id='lvl-req-input'
                     />
                 ) : current?.exp_req}</li>
                 <li><u>Themes:</u><br />
@@ -103,14 +108,15 @@ const CampaignPage = ({user, campaigns}) => {
                             value={themes}
                             onChange={e => setThemes(e.target.value)}
                             type='text'
+                            id='campaign-themes-input'
                         />
                     ) : current?.themes}
                 </li>
             </ul>
             {user?.id === current?.user_id && (
                 <>
-                    {editStatus ? <button onClick={saveClick}>Save</button> : <button onClick={editClick}>Edit</button> }
-                    <button onClick={delClick}>Delete</button>
+                    {editStatus ? <button className='pref-but' onClick={saveClick}>Save</button> : <button className='pref-but' onClick={editClick}>Edit</button> }
+                    <button className='pref-but' onClick={delClick}>Delete</button>
                     {confirm && <p>Are you sure you want to delete this campaign?</p>}
                 </>
             )}

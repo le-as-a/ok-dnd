@@ -36,7 +36,10 @@ function UserPage({user}) {
   const delClick = async e => {
     e.preventDefault();
     if (confirm) await dispatch(del_questionnaire(userId));
-    setConfirm(true);
+    else {
+      setConfirm(true);
+      setEditStatus(false);
+    }
   }
   
   if (!user) {
@@ -44,62 +47,73 @@ function UserPage({user}) {
   }
   
   return (
-    <>
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-      {questionnaire && (
-        <>
-          <li>
-            <strong>Experience Level</strong> {editStatus ? (
-              <input
-                name='exp_lvl'
-                value={expLvl}
-                onChange={e => setExpLvl(e.target.value)}
-                type='number'
-                min='1'
-                max='3'
-              />
-            ) : questionnaire?.exp_lvl}
-          </li>
-          <li>
-            <strong>Themes</strong> {editStatus ? (
-              <input
-                placeholder={`${questionnaire?.themes}`}
-                name='themes'
-                value={themes}
-                onChange={e => setThemes(e.target.value)}
-                type='text'
-              />
-            ) : questionnaire?.themes}
-          </li>
-          <li>
-            <strong>Background</strong> {editStatus ? (
-              <input
-                placeholder={`${questionnaire?.background}`}
-                name='background'
-                value={background}
-                onChange={e => setBackground(e.target.value)}
-                type='text'
-              />
-            ) : questionnaire?.background}
-          </li>
-          {editStatus ? <button onClick={saveEdit}>Save</button> : <button onClick={editClick}>Edit</button>} <button onClick={delClick}>Delete</button>
-          {confirm && <p>Are you sure you want to delete your preferences?</p>}
-        </>
-      )}
-      {!questionnaire && (
-          <NavLink to={`/users/${userId}/questionnaire/new`}><button>Set Preferences</button></NavLink>
-      )}
-    </ul>
-    </>
+    <div className='user'>
+      <div className='about-user'>
+        <div className='user-info'>
+          <u>Username:</u> <span>{user?.username}</span><br />
+          <u>Email Address:</u> <span>{user?.email}</span>
+        </div>
+        <div className='user-background'>
+          <u>Background:</u><br />
+          {editStatus ? (
+            <textarea
+              placeholder={`${questionnaire?.background}`}
+              name='background'
+              value={background}
+              onChange={e => setBackground(e.target.value)}
+              type='text'
+              id='user-bg'
+            />
+          ) : questionnaire?.background ? questionnaire.background : <span>Nothing here right now...</span>}
+        </div>
+      </div>
+      <div className='preference-settings'>
+        {questionnaire ? (
+          <>
+            <ul type='none'>
+              <li><h3>Preferences:</h3></li>
+              <li>
+                <u>Experience Level:</u> {editStatus ? (
+                  <input
+                    name='exp_lvl'
+                    value={expLvl}
+                    onChange={e => setExpLvl(e.target.value)}
+                    type='number'
+                    min='1'
+                    max='3'
+                    id='exp-lvl'
+                  />
+                ) : questionnaire?.exp_lvl}
+              </li>
+              <li>
+                <u>Preferred Themes:</u><br />
+                {editStatus ? (
+                  <input
+                    placeholder={`${questionnaire?.themes}`}
+                    name='themes'
+                    value={themes}
+                    onChange={e => setThemes(e.target.value)}
+                    type='text'
+                    id='theme-edit'
+                  />
+                ) : questionnaire?.themes}
+
+              </li>
+            </ul>
+            <div className='pref-buttons'>
+              {editStatus ? <button onClick={saveEdit} className='user-buttons'>Save</button> : <button onClick={editClick} className='user-buttons' id='edit-space'>Edit</button>} <button onClick={delClick} className='user-buttons'>Delete</button>
+              {confirm && <p>Are you sure you want to delete your preferences?</p>}
+            </div>
+          </>) : (
+            <>
+              <p>Oops! You don't have any preferences set.</p>
+              <NavLink to={`/users/${userId}/questionnaire/new`} id='new-pref'>
+                Fill out your preferences here.
+              </NavLink>
+            </>
+          )}
+      </div>
+    </div>
   );
 }
 export default UserPage;

@@ -1,0 +1,82 @@
+.user {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+    margin-top: 6em;
+}
+
+.about-user {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info, .user-background {
+    font-size: large;
+    color: #A4243B;
+    padding: 1em;
+    width: 30em;
+    border-radius: 1em;
+    background-color: #d8c99b;
+}
+
+#user-bg {
+    width: 100%;
+    height: 15em;
+    background-color: #d8c99b;
+    border: 0;
+    color: #A4243B;
+    border-radius: .25em;
+    font-size: large;
+}
+
+#exp-lvl {
+    font-size: large;
+    padding: .25em;
+    margin-left: .5em;
+    background-color: #d8c99b;
+    color: #A4243B;
+}
+
+#theme-edit {
+    font-size: large;
+    padding: .25em;
+    background-color: #d8c99b;
+    color: #A4243B;
+}
+
+.user-background {
+    margin-top: 3em;
+}
+
+.preference-settings {
+    margin-left: 7em;
+    font-size: larger;
+    justify-content: center;
+    color: #A4243B;
+    border-radius: 1em;
+    background-color: #d8c99b;
+    width: 30em;
+    padding: 1em;
+}
+
+.pref-buttons {
+    margin-left: 2em;
+}
+
+.user-buttons {
+    font-size: large;
+    border: 0;
+    background-color: #A4243B;
+    color: #d8c99b;
+    padding: .5em .7em;
+    border-radius: .25em;
+}
+
+#edit-space {
+    margin-right: .5em;
+}
+
+#new-pref {
+    color: #273e47;
+}
