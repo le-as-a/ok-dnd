@@ -1,0 +1,93 @@
+.new-campaign-page {
+    width: 50%;
+    margin: auto;
+    margin-top: 2em;
+    background-color: #d8c99b;
+    padding: 1.5em 0;
+    border-radius: .5em;
+    color: #A4243B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#campaign-create-form {
+    text-align: center;
+}
+
+#campaign-name-input {
+    display: flex;
+    flex-direction: row;
+}
+
+#input-box-name {
+    background-color: #d8c99b;
+    margin-left: 1em;
+    border-radius: .25em;
+    border: 1px solid #A4243B;
+    font-size: large;
+    text-align: center;
+    padding: .25em 0;
+    width: 25em;
+}
+
+#about-input {
+    background-color: #d8c99b;
+    margin-left: .5em;
+    border-radius: .25em;
+    border: 1px solid #A4243B;
+    font-size: large;
+    width: 40em;
+    height: 10em;
+    max-height: 10em;
+    max-width: 40em;
+    padding: .5em;
+}
+
+.cc-labels {
+    font-size: x-large;
+}
+
+#maxes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 .75em;
+    margin-top: .5em;
+}
+
+#pm-container, #er-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.number-style {
+    background-color: #d8c99b;
+    margin-left: .5em;
+    border-radius: .25em;
+    border: 1px solid #A4243B;
+    font-size: large;
+    text-align: center;
+    width: 3em;
+}
+
+#create-button {
+    font-size: large;
+    border: 0;
+    background-color: #A4243B;
+    color: #d8c99b;
+    padding: .5em .7em;
+    border-radius: .25em;
+}
+
+#themes-input {
+    background-color: #d8c99b;
+    margin-left: .5em;
+    border-radius: .25em;
+    border: 1px solid #A4243B;
+    font-size: large;
+    text-align: center;
+    padding: .25em 0;
+    width: 25em;
+}

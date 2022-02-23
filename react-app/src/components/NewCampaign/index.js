@@ -49,19 +49,22 @@ const NewCampaign = ({user}) => {
     }
 
     return (
-        <>
-            <form>
-                <label for='name'>
-                    Campaign Name: 
-                </label><br />
-                <input
-                    name='name'
-                    value={name}
-                    placeholder='name of the campaign...'
-                    onChange={e => setName(e.target.value)}
-                    type='text'
-                /><br /><br />
-                <label for='about'>
+        <div className='new-campaign-page'>
+            <form id='campaign-create-form'>
+                <div id='campaign-name-input'>
+                    <label for='name' className='cc-labels'>
+                        Campaign Name: 
+                    </label><br />
+                    <input
+                        name='name'
+                        value={name}
+                        placeholder='name of the campaign...'
+                        onChange={e => setName(e.target.value)}
+                        type='text'
+                        id='input-box-name'
+                    />
+                </div><br />
+                <label for='about' className='cc-labels'>
                     Details:
                 </label><br />
                 <textarea
@@ -69,30 +72,39 @@ const NewCampaign = ({user}) => {
                     value={about}
                     placeholder='details of campaign...'
                     onChange={e => setAbout(e.target.value)}
-                /><br /><br />
-                <label for='player_max'>
-                    Player Max: 
-                </label><br />
-                <input
-                    name='player_max'
-                    value={playerMax}
-                    onChange={e => setPlayerMax(e.target.value)}
-                    type='number'
-                    min='1'
-                    max='8'
-                /><br /><br />
-                <label for='exp_req'>
-                    Experience Level Required: 
-                </label><br />
-                <input
-                    name='exp_req'
-                    value={expReq}
-                    onChange={e => setExpReq(e.target.value)}
-                    type='number'
-                    min='1'
-                    max='3'
-                /><br /><br />
-                <label for='themes'>
+                    id='about-input'
+                /><br />
+                <div id='maxes-container'>
+                    <div id='pm-container'>
+                        <label for='player_max' className='cc-labels'>
+                            Player Max: 
+                        </label><br />
+                        <input
+                            name='player_max'
+                            value={playerMax}
+                            onChange={e => setPlayerMax(e.target.value)}
+                            type='number'
+                            min='1'
+                            max='8'
+                            className='number-style'
+                        />
+                    </div>
+                    <div id='er-container'>
+                        <label for='exp_req' className='cc-labels'>
+                            Experience Level Required: 
+                        </label><br />
+                        <input
+                            name='exp_req'
+                            value={expReq}
+                            onChange={e => setExpReq(e.target.value)}
+                            type='number'
+                            min='1'
+                            max='3'
+                            className='number-style'
+                        />
+                    </div>
+                </div><br />
+                <label for='themes' className='cc-labels'>
                     Campaign Themes: 
                 </label><br />
                 <input
@@ -101,15 +113,16 @@ const NewCampaign = ({user}) => {
                     placeholder='ex: combat, exploration, puzzles...'
                     onChange={e => setThemes(e.target.value)}
                     type='text'
+                    id='themes-input'
                 /><br /><br />
-                <button onClick={onClick}>Create Campaign</button>
+                <button id='create-button' onClick={onClick}>Create</button>
             </form>
             {showErrors && (
                 <ul>
                     {errors.map((e, i) => <li key={`${i}`}>{e}</li>)}
                 </ul>
             )}
-        </>
+        </div>
     );
 }
 

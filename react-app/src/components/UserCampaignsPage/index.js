@@ -19,14 +19,12 @@ function UserCampaignsPage({user, campaigns}) {
                 <h3>Created</h3>
             </div>
             <div className='campaign-container'>
-                {collection.map((c, i) => (
+                {collection.map((c) => (
                     <NavLink to={`/campaigns/${c?.id}`} className='c-card-link'>
                         <div className='campaign-card' key={`${c?.id}`}>
-                            <ul type='none' id='cc-list'>
-                                <li><u>Campaign Name:</u> {c?.name}</li>
-                                <li><u>Player Max:</u> {c?.player_max}</li>
-                                <li><u>Details:</u><br />{c?.about}</li>
-                            </ul>
+                            <h3 className='card-title'>{c?.name}</h3>
+                            <p className='num-card'>{c?.player_max} players max</p>
+                            <p className='num-card'>Experience Level: {c?.exp_req}</p>
                         </div>
                     </NavLink>
                 ))}
