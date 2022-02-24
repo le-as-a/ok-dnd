@@ -18,6 +18,8 @@ const CampaignPage = ({user, campaigns}) => {
     const [expReq, setExpReq] = useState(current?.exp_req);
     const [themes, setThemes] = useState(current?.themes);
     const [confirm, setConfirm] = useState(false);
+    const [showErrors, setShowErrors] = useState(false);
+    const [errors, setErrors] = useState([]);
 
     const editClick = e => {
         e.preventDefault();
@@ -27,6 +29,14 @@ const CampaignPage = ({user, campaigns}) => {
 
     const saveClick = async e => {
         e.preventDefault();
+        let errors = [];
+
+        if (name.length < 3 || name.length > 30) errors.push("Name must be between 3-30 characters.");
+        if (about.length < 3 || about.length > 500) errors.push("Description must be between 3-500 characters.");
+        if (playerMax < 1 || playerMax > 8) errors.push("Player max must be between 1-8.");
+        if (expReq < 1 || expReq > 3) errors.push("Experience level required must be between 1-3.");
+        if (!themes) errors.push("Must include at least one theme.");
+
         const updated = {
             campaignId,
             name,
@@ -35,9 +45,15 @@ const CampaignPage = ({user, campaigns}) => {
             exp_req: expReq,
             themes
         }
-        await dispatch(update_campaign(updated))
-        setEditStatus(false);
-        setConfirm(false);
+
+        if (errors.length === 0) {
+            await dispatch(update_campaign(updated))
+            setEditStatus(false);
+            setConfirm(false);
+        } else {
+            setShowErrors(true);
+            setErrors(errors);
+        }
     }
 
     const delClick = async e => {
@@ -120,6 +136,9 @@ const CampaignPage = ({user, campaigns}) => {
                     {confirm && <p>Are you sure you want to delete this campaign?</p>}
                 </>
             )}
+            <ul id='errors-list' type='none'>
+                {showErrors && errors.map((e, i) => <li key={`${i}`}>{e}</li>)}
+            </ul>
         </div>
     );
 }

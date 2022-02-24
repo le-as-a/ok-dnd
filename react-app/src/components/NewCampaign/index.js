@@ -14,11 +14,11 @@ const NewCampaign = ({user}) => {
     const [expReq, setExpReq] = useState(1);
     const [themes, setThemes] = useState('');
     const [showErrors, setShowErrors] = useState(false);
-    let errors = [];
+    const [errors, setErrors] = useState([]);
     
     const onClick = async e => {
         e.preventDefault();
-        errors.splice(0);
+        let errors = [];
         const data = {
             name,
             about,
@@ -43,9 +43,7 @@ const NewCampaign = ({user}) => {
             console.log(errors);
         }
 
-
-        
-        
+        setErrors(errors);
     }
 
     return (
@@ -118,7 +116,7 @@ const NewCampaign = ({user}) => {
                 <button id='create-button' onClick={onClick}>Create</button>
             </form>
             {showErrors && (
-                <ul>
+                <ul id='errors-list' type='none'>
                     {errors.map((e, i) => <li key={`${i}`}>{e}</li>)}
                 </ul>
             )}

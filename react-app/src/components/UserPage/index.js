@@ -12,6 +12,7 @@ function UserPage({user}) {
   const [expLvl, setExpLvl] = useState(questionnaire?.exp_lvl);
   const [background, setBackground] = useState(questionnaire?.background);
   const [confirm, setConfirm] = useState(false);
+  const [allErrors, setErrors] = useState([]);
   
   let themes = " ";
   let currThemes = questionnaire?.themes;
@@ -173,8 +174,6 @@ function UserPage({user}) {
     if (currThemes.includes("longterm")) showThemes.push("Longterm");
     numThemes = showThemes.length - 1;
   }
-
-  console.log(currThemes)
   
   const saveEdit = async e => {
     e.preventDefault();
@@ -192,18 +191,25 @@ function UserPage({user}) {
     if (isCharacterDevelopment) themes += "charDev ";
     if (isEpisodic) themes += "episodic ";
     if (isLongterm) themes += "longterm ";
+
+    let errors = [];
+    if (expLvl < 1 || expLvl > 3) errors.push("Experience level required must be between 1-3.");
+    if (!themes) errors.push("Must include at least one theme.");
     
-    const updated = {
-      exp_lvl: expLvl,
-      themes,
-      background,
-      user_id: userId
+    if (errors.length === 0) {
+      const updated = {
+        exp_lvl: expLvl,
+        themes,
+        background,
+        user_id: userId
+      }
+      await dispatch(edit_questionnaire(updated));
+      setEditStatus(false);
+      setConfirm(false);
+    } else {
+      setErrors(errors);
     }
-    await dispatch(edit_questionnaire(updated));
-    setEditStatus(false);
-    setConfirm(false);
   }
-  
   const editClick = e => {
     e.preventDefault();
 
@@ -308,6 +314,9 @@ function UserPage({user}) {
               {editStatus ? <button onClick={saveEdit} className='user-buttons'>Save</button> : <button onClick={editClick} className='user-buttons' id='edit-space'>Edit</button>} <button onClick={delClick} className='user-buttons'>Delete</button>
               {confirm && <p>Are you sure you want to delete your preferences?</p>}
             </div>
+            <ul id='errors-list' type='none'>
+              {allErrors.map((e, i) => <li key={`${i}`}>{e}</li>)}
+            </ul>
           </>) : (
             <>
               <p>Oops! You don't have any preferences set.</p>

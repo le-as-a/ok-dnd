@@ -9,7 +9,7 @@
     color: #A4243B;
     border-radius: .5em;
     padding-top: 2em;
-    margin-top: 1em;
+    margin-top: .5em;
 }
 
 #register-form {
@@ -71,4 +71,8 @@
 #signup-buttons > button#login-demo {
     margin-left: 2em;
     width: 8em;
+}
+
+#signup-errors {
+    margin-bottom: 1em;
 }

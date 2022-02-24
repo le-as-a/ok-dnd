@@ -53,11 +53,6 @@ const SignUpForm = () => {
       <NavLink to='/'>
         <img src='https://i.imgur.com/G90ynzP.png' id='site-logo' />
       </NavLink>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
       <form onSubmit={onSignUp} id='register-form'>
         <div className='signup-div'>
           <label>User Name</label>
@@ -101,6 +96,11 @@ const SignUpForm = () => {
           <button id='login-demo' onClick={handleDemoLogin}>Demo User</button>
         </div>
       </form>
+      <div id='signup-errors'>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
     </div>
   );
 };
