@@ -14,11 +14,13 @@
 
 #campaign-create-form {
     text-align: center;
+    color: #A4243B;
 }
 
 #campaign-name-input {
     display: flex;
     flex-direction: row;
+    color: #A4243B;
 }
 
 #input-box-name {
@@ -30,6 +32,7 @@
     text-align: center;
     padding: .25em 0;
     width: 25em;
+    color: #A4243B;
 }
 
 #about-input {
@@ -43,6 +46,7 @@
     max-height: 10em;
     max-width: 40em;
     padding: .5em;
+    color: #A4243B;
 }
 
 .cc-labels {
@@ -70,6 +74,7 @@
     font-size: large;
     text-align: center;
     width: 3em;
+    color: #A4243B;
 }
 
 #create-button {
@@ -90,5 +95,6 @@
     text-align: center;
     padding: .25em 0;
     width: 25em;
+    color: #A4243B;
 }
 

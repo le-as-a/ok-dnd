@@ -11,6 +11,7 @@ import PreferenceSettings from './components/PreferenceSettings';
 import NewCampaign from './components/NewCampaign';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
+import ErrorPage from './components/404ErrorPage';
 import { authenticate } from './store/session';
 import { get_questionnaire } from './store/questionnaire';
 import { read_campaigns } from './store/campaign';
@@ -61,6 +62,9 @@ function App() {
         </Route>
         <Route path={`/users/${userId}/campaigns/new`} exact={true}>
           <NewCampaign user={user} />
+        </Route>
+        <Route>
+          <ErrorPage user={user} />
         </Route>
       </Switch>
       <Footer />

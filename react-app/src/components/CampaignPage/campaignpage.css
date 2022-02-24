@@ -33,6 +33,7 @@ div.single-campaign {
     text-align: center;
     padding: .25em 0;
     width: 25em;
+    color: #A4243B;
 }
 
 #desc-input {
@@ -44,6 +45,7 @@ div.single-campaign {
     width: 40em;
     height: 15em;
     max-height: 15em;
+    color: #A4243B;
 }
 
 #pmax-input, #lvl-req-input {
@@ -54,6 +56,7 @@ div.single-campaign {
     font-size: large;
     text-align: center;
     width: 3em;
+    color: #A4243B;
 }
 
 #campaign-themes-input {
@@ -65,4 +68,5 @@ div.single-campaign {
     text-align: center;
     padding: .25em 0;
     width: 25em;
+    color: #A4243B;
 }
