@@ -23,19 +23,17 @@
 }
 
 .campaign-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     margin: auto;
     width: 60%;
-    justify-content: space-between;
     margin-top: 1em;
 }
 
 .campaign-stuff {
     display: flex;
     flex-direction: row-reverse;
-    width: 60%;
+    width: 55%;
     margin: auto;
     justify-content: space-between;
     align-items: center;
@@ -59,4 +57,9 @@
     font-family: 'Grenze Gotisch', cursive;
     font-size: x-large;
     text-align: center;
+}
+
+#card-details {
+    text-align: center;
+    margin-top: -.5em;
 }

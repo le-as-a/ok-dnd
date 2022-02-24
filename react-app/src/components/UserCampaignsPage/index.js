@@ -23,8 +23,10 @@ function UserCampaignsPage({user, campaigns}) {
                     <NavLink to={`/campaigns/${c?.id}`} className='c-card-link'>
                         <div className='campaign-card' key={`${c?.id}`}>
                             <h3 className='card-title'>{c?.name}</h3>
-                            <p className='num-card'>{c?.player_max} players max</p>
-                            <p className='num-card'>Experience Level: {c?.exp_req}</p>
+                            <p id='card-details'>
+                                {c?.player_max} players max<br />
+                                Experience Level: {c?.exp_req}<br />
+                            </p>
                         </div>
                     </NavLink>
                 ))}

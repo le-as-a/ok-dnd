@@ -9,11 +9,57 @@ const PreferenceSettings = ({user, questionnaire}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [expLvl, setExpLvl] = useState(1);
-    const [themes, setThemes] = useState('');
     const [background, setBackground] = useState('');
+    let themes = ' ';
+
+    // theme buttons
+    const [isPuzzle, setIsPuzzle] = useState(false);
+    const [isCombat, setIsCombat] = useState(false);
+    const [isStory, setIsStory] = useState(false);
+    const [isExploration, setIsExploration] = useState(false);
+    const [isRoleplay, setIsRoleplay] = useState(false);
+    const [isComedy, setIsComedy] = useState(false);
+    const [isSandbox, setIsSandbox] = useState(false);
+    const [isLinear, setIsLinear] = useState(false);
+    const [isChoicesMatter, setIsChoicesMatter] = useState(false);
+    const [isMagicHeavy, setIsMagicHeavy] = useState(false);
+    const [isMagicScarce, setIsMagicScarce] = useState(false);
+    const [isCharacterDevelopment, setIsCharacterDevelopment] = useState(false);
+    const [isEpisodic, setIsEpisodic] = useState(false);
+    const [isLongterm, setIsLongterm] = useState(false);
+
+    const puzzleClick = () => setIsPuzzle(!isPuzzle);
+    const combatClick = () => setIsCombat(!isCombat);
+    const storyClick = () => setIsStory(!isStory);
+    const exploreClick = () => setIsExploration(!isExploration);
+    const rpClick = () => setIsRoleplay(!isRoleplay);
+    const comedyClick = () => setIsComedy(!isComedy);
+    const sandboxClick = () => setIsSandbox(!isSandbox);
+    const linearClick = () => setIsLinear(!isLinear);
+    const choicesClick = () => setIsChoicesMatter(!isChoicesMatter);
+    const mhClick = () => setIsMagicHeavy(!isMagicHeavy);
+    const msClick = () => setIsMagicScarce(!isMagicScarce);
+    const charClick = () => setIsCharacterDevelopment(!isCharacterDevelopment);
+    const episodicClick = () => setIsEpisodic(!isEpisodic);
+    const longtermClick = () => setIsLongterm(!isLongterm);
 
     const onClick = async e => {
         e.preventDefault();
+        if (isPuzzle) themes += "puzzles ";
+        if (isCombat) themes += "combat ";
+        if (isStory) themes += "story ";
+        if (isExploration) themes += "exploration ";
+        if (isRoleplay) themes += "roleplay ";
+        if (isComedy) themes += "comedy ";
+        if (isSandbox) themes += "sandbox ";
+        if (isLinear) themes += "linear ";
+        if (isChoicesMatter) themes += "choices ";
+        if (isMagicHeavy) themes += "magicH ";
+        if (isMagicScarce) themes += "magicS ";
+        if (isCharacterDevelopment) themes += "charDev ";
+        if (isEpisodic) themes += "episodic ";
+        if (isLongterm) themes += "longterm ";
+
         const data = {
             exp_lvl: expLvl,
             themes,
@@ -55,14 +101,22 @@ const PreferenceSettings = ({user, questionnaire}) => {
                     </div>
                     
                     <label className="q-label" for='themes'>What aspects of DND are you interested in?</label>
-                    <input
-                        name='themes'
-                        value={themes}
-                        placeholder='themes...'
-                        onChange={e => setThemes(e.target.value)}
-                        type='text'
-                        id='theme-input'
-                    />
+                    <div id='theme-buttons'>
+                        <button>Puzzles</button>
+                        <button>Combat</button>
+                        <button>Story</button>
+                        <button>Exploration</button>
+                        <button>Roleplay</button>
+                        <button>Comedy</button>
+                        <button>Sandbox</button>
+                        <button>Linear</button>
+                        <button>Choices Matter</button>
+                        <button>Magic Heavy</button>
+                        <button>Magic Scarce</button>
+                        <button>Character Development</button>
+                        <button>Episodic</button>
+                        <button>Longterm</button>
+                    </div>
                     <label className="q-label" for='background'>Tell us more about you as a player:</label>
                     <textarea
                         name='background'
@@ -78,7 +132,7 @@ const PreferenceSettings = ({user, questionnaire}) => {
             )}
             {questionnaire && <Redirect to={`/users/${userId}`} />}
         </div>
-    );
+    )
 }
 
 export default PreferenceSettings;
