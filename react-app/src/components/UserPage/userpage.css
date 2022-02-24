@@ -1,6 +1,7 @@
 .user {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     width: 80%;
     margin: auto;
     margin-top: 7.5em;
