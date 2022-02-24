@@ -14,6 +14,28 @@ function UserPage({user}) {
   const [background, setBackground] = useState(questionnaire?.background);
   const [confirm, setConfirm] = useState(false);
 
+  let currThemes = questionnaire?.themes;
+  let showThemes = "";
+
+  if (currThemes) {
+    currThemes = currThemes.split(" ");
+    
+    if (currThemes.includes("puzzles")) showThemes += "| Puzzles |";
+    if (currThemes.includes ("combat")) showThemes += "| Combat |";
+    if (currThemes.includes("story")) showThemes += "| Story |";
+    if (currThemes.includes("exploration")) showThemes += "| Exploration |";
+    if (currThemes.includes ("roleplay")) showThemes += "| Roleplay |";
+    if (currThemes.includes("comedy")) showThemes += "| Comedy |";
+    if (currThemes.includes("sandbox")) showThemes += "| Sandbox |";
+    if (currThemes.includes("linear")) showThemes += "| Linear |";
+    if (currThemes.includes("choices")) showThemes += "| Choices |";
+    if (currThemes.includes("magicH")) showThemes += "| Magic Heavy |";
+    if (currThemes.includes("magicS")) showThemes += "| Magic Scarce |";
+    if (currThemes.includes("charDev")) showThemes += "| Character Development |";
+    if (currThemes.includes("episodic")) showThemes += "| Episodic |";
+    if (currThemes.includes("longterm")) showThemes += "| Longterm |";
+  }
+
   const editClick = e => {
     e.preventDefault();
     setEditStatus(true);
@@ -96,7 +118,7 @@ function UserPage({user}) {
                     type='text'
                     id='theme-edit'
                   />
-                ) : questionnaire?.themes}
+                ) : showThemes}
 
               </li>
             </ul>
