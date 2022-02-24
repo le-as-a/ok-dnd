@@ -1,0 +1,74 @@
+.register-container {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d8c99b;
+    color: #A4243B;
+    border-radius: .5em;
+    padding-top: 2em;
+    margin-top: 1em;
+}
+
+#register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.signup-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: x-large;
+    font-family: 'Grenze Gotisch', cursive;
+    width: 20em;
+    margin-bottom: 1em;
+}
+
+#register-form > div > input {
+    font-size: large;
+    padding: .5em .75em;
+    width: 15em;
+    border: 1px solid #A4243B;
+    background-color: #d8c99b;
+    border-radius: .25em;
+    color: #A4243B;
+}
+
+#register-form > button {
+    font-size: large;
+    border: 0;
+    background-color: #A4243B;
+    color: #d8c99b;
+    padding: .5em .6em;
+    border-radius: .25em;
+    width: 6em;
+}
+
+#signup-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+}
+
+#signup-buttons > button {
+    font-size: large;
+    border: 0;
+    background-color: #A4243B;
+    color: #d8c99b;
+    padding: .5em .6em;
+    border-radius: .25em;
+    width: 6em;
+}
+
+#signup-buttons > button#login-demo {
+    margin-left: 2em;
+    width: 8em;
+}
