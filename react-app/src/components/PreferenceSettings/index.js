@@ -166,8 +166,10 @@ const PreferenceSettings = ({user, questionnaire}) => {
         if (isLongterm) themes += "longterm ";
 
         let errors = [];
+        let noSpaceTheme = themes.trim();
         if (expLvl < 1 || expLvl > 3) errors.push("Experience level required must be between 1-3.");
-        if (!themes) errors.push("Must include at least one theme.");
+        if (!noSpaceTheme) errors.push("Must include at least one theme.");
+        if (background.length < 3 || background.length > 500) errors.push("Background must be between 3 and 500 characters.");
         setAllErrors(errors);
 
         if (allErrors.length === 0) {

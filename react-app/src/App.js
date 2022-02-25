@@ -13,7 +13,7 @@ import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import ErrorPage from './components/404ErrorPage';
 import { authenticate } from './store/session';
-import { get_questionnaire } from './store/questionnaire';
+import { get_questionnaire, rem_questionnaire } from './store/questionnaire';
 import { read_campaigns } from './store/campaign';
 
 function App() {
@@ -27,7 +27,8 @@ function App() {
   useEffect(() => {
     (async() => {
       dispatch(authenticate());
-      dispatch(get_questionnaire(userId));
+      if (!userId) dispatch(rem_questionnaire());
+      else dispatch(get_questionnaire(userId));
       dispatch(read_campaigns());
       setLoaded(true);
     })();

@@ -3,6 +3,7 @@ const NEW_Q = 'session/NEW_Q';
 const GET_Q = 'session/GET_Q';
 const EDIT_Q = 'session/EDIT_Q';
 const DEL_Q = 'session/DEL_Q';
+const REM_Q = 'session/REM_Q';
 
 const newQue = que => ({
     type: NEW_Q,
@@ -77,6 +78,14 @@ export const del_questionnaire = (user_id) => async dispatch => {
     }
 }
 
+const remQue = () => ({
+    type: REM_Q
+})
+
+export const rem_questionnaire = () => async dispatch => {
+    dispatch(remQue());
+}
+
 const initialState = { questionnaire: null };
 export default function reducer(state = initialState, action) {
     let newState;
@@ -91,6 +100,8 @@ export default function reducer(state = initialState, action) {
             newState = { ...state, questionnaire: action.payload };
             return newState;
         case DEL_Q:
+            return { questionnaire: null };
+        case REM_Q:
             return { questionnaire: null };
         default:
             return state;

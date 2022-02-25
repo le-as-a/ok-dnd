@@ -24,6 +24,10 @@ div.single-campaign {
     margin-right: .5em;
 }
 
+.pref-but:hover {
+    background-color: #273E47;
+}
+
 #name-input {
     background-color: #d8c99b;
     margin-left: .5em;
