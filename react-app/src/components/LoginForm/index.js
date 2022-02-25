@@ -39,7 +39,7 @@ const LoginForm = () => {
   return (
     <div className='login-container'>
       <NavLink to='/'>
-        <img src='https://i.imgur.com/G90ynzP.png' id='site-logo' />
+        <img src='https://i.imgur.com/G90ynzP.png' id='site-logo' alt='logo' />
       </NavLink>
       <div>
         {errors.map((error, ind) => (

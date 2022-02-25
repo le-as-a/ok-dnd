@@ -53,7 +53,7 @@ const SignUpForm = () => {
   return (
     <div className='register-container'>
       <NavLink to='/'>
-        <img src='https://i.imgur.com/G90ynzP.png' id='site-logo' />
+        <img src='https://i.imgur.com/G90ynzP.png' id='site-logo' alt='logo' />
       </NavLink>
       <form onSubmit={onSignUp} id='register-form'>
         <div className='signup-div'>
