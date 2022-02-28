@@ -193,8 +193,10 @@ function UserPage({user}) {
     if (isLongterm) themes += "longterm ";
 
     let errors = [];
+    let noSpacesTheme = themes.trim();
     if (expLvl < 1 || expLvl > 3) errors.push("Experience level required must be between 1-3.");
-    if (!themes) errors.push("Must include at least one theme.");
+    if (noSpacesTheme.length === 0) errors.push("Must include at least one theme.");
+    if (!background || background.length < 3 || background.length > 500) errors.push("Background must be between 3-500 characters.")
     
     if (errors.length === 0) {
       const updated = {
@@ -206,6 +208,7 @@ function UserPage({user}) {
       await dispatch(edit_questionnaire(updated));
       setEditStatus(false);
       setConfirm(false);
+      setErrors([]);
     } else {
       setErrors(errors);
     }
