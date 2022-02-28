@@ -1,5 +1,5 @@
 # OK DND
-[OK DND](https://ok-dnd.herokuapp.com/) is an app based on the original OK Cupid, where you as a user can be matched with potential campaigns created by other users. This was built using React and Redux for the frontend, and Python, Flask SQL Alchemy, and PostgreSQL for the backend.
+[OK DND](https://ok-dnd.herokuapp.com/) is an app based on the original OK Cupid, where you as a user can be matched with potential campaigns created by other users. **This was built using React and Redux for the frontend, and Python, Flask SQL Alchemy, and PostgreSQL for the backend.**
 ## Run locally
 1. Clone this repository.
 2. Run the following in the root directory:
