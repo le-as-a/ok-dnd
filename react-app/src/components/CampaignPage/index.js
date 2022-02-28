@@ -175,7 +175,7 @@ const CampaignPage = ({user, campaigns}) => {
         if (currThemes.includes("comedy")) showThemes.push("Comedy");
         if (currThemes.includes("sandbox")) showThemes.push("Sandbox");
         if (currThemes.includes("linear")) showThemes.push("Linear");
-        if (currThemes.includes("choices")) showThemes.push("Choices");
+        if (currThemes.includes("choices")) showThemes.push("Choices Matter");
         if (currThemes.includes("magicH")) showThemes.push("Magic Heavy");
         if (currThemes.includes("magicS")) showThemes.push("Magic Scarce");
         if (currThemes.includes("charDev")) showThemes.push("Character Development");
