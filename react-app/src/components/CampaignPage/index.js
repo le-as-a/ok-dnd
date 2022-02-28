@@ -244,6 +244,7 @@ const CampaignPage = ({user, campaigns}) => {
             await dispatch(update_campaign(updated))
             setEditStatus(false);
             setConfirm(false);
+            setErrors([]);
         } else {
             setShowErrors(true);
             setErrors(errors);
@@ -258,12 +259,14 @@ const CampaignPage = ({user, campaigns}) => {
         }
         setConfirm(true);
         setEditStatus(false);
+        setErrors([]);
     }
 
     const cancelClick = () => {
         setConfirm(false);
         setEditStatus(false);
         setShowErrors(false);
+        setErrors([]);
     }
 
     if (!user) return null;

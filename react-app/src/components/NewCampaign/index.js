@@ -183,6 +183,7 @@ const NewCampaign = ({user}) => {
         if (playerMax < 1 || playerMax > 8) errors.push("Player max must be between 1-8.");
         if (expReq < 1 || expReq > 3) errors.push("Experience level required must be between 1-3.");
         if (!noSpacesTheme) errors.push("Must include at least one theme.");
+        setErrors(errors);
 
         if (errors.length === 0) {
             setShowErrors(false);
@@ -190,10 +191,8 @@ const NewCampaign = ({user}) => {
             history.push(`/users/${userId}/campaigns`);
         } else {
             setShowErrors(true);
-            console.log(errors);
         }
 
-        setErrors(errors);
     }
 
     return (

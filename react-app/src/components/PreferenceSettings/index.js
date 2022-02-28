@@ -10,7 +10,8 @@ const PreferenceSettings = ({user, questionnaire}) => {
     const history = useHistory();
     const [expLvl, setExpLvl] = useState(1);
     const [background, setBackground] = useState('');
-    const [allErrors, setAllErrors] = useState([]);
+    const [showErrors, setShowErrors] = useState(false);
+    const [errors, setErrors] = useState([]);
     let themes = ' ';
 
     // theme buttons
@@ -150,6 +151,7 @@ const PreferenceSettings = ({user, questionnaire}) => {
 
     const onClick = async e => {
         e.preventDefault();
+        let errors = [];
         if (isPuzzle) themes += "puzzles ";
         if (isCombat) themes += "combat ";
         if (isStory) themes += "story ";
@@ -165,23 +167,27 @@ const PreferenceSettings = ({user, questionnaire}) => {
         if (isEpisodic) themes += "episodic ";
         if (isLongterm) themes += "longterm ";
 
-        let errors = [];
+        const data = {
+            exp_lvl: expLvl,
+            themes,
+            background,
+            user_id: userId
+        }
+        
         let noSpaceTheme = themes.trim();
         if (expLvl < 1 || expLvl > 3) errors.push("Experience level required must be between 1-3.");
         if (!noSpaceTheme) errors.push("Must include at least one theme.");
-        if (background.length < 3 || background.length > 500) errors.push("Background must be between 3 and 500 characters.");
-        setAllErrors(errors);
+        if (!background || background.length < 3 || background.length > 500) errors.push("Background must be between 3 and 500 characters.");
+        setErrors(errors);
 
-        if (allErrors.length === 0) {
-            const data = {
-                exp_lvl: expLvl,
-                themes,
-                background,
-                user_id: userId
-            }
+        console.log(errors)
+        if (errors.length === 0) {
+            setShowErrors(false);
             await dispatch(new_questionnaire(data));
             history.push(`/users/${userId}`);
-        } 
+        } else {
+            setShowErrors(true);
+        }
     }
 
     return (
@@ -244,9 +250,11 @@ const PreferenceSettings = ({user, questionnaire}) => {
                             <button className="pref-but" onClick={onClick}>Save</button> <NavLink to={`/users/${userId}`}><button className="pref-but">Skip</button></NavLink>
                         </div>
                     </form>
-                    <ul id='errors-list'>
-                        {allErrors.map((e, i) => <li key={`${i}`}>{e}</li>)}
-                    </ul>
+                    {showErrors && (
+                        <ul id='errors-list' type='none'>
+                            {errors.map((e, i) => <li key={`${i}`}>{e}</li>)}
+                        </ul>
+                    )}
                 </>
             )}
 
